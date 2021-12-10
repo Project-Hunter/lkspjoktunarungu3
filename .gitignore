@@ -1,3 +1,5 @@
 /assets/comp/tinymce/plugins/tiny_mce_wiris/cache/
 /application/cache/twig/*
 !/application/cache/twig/index.html
+/application/config/config.php
+/application/config/database.php
