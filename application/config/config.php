@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = 'http://localhost/new_elearning2/';
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +64,7 @@ $config['turn_off_all_plugin'] = false;
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
