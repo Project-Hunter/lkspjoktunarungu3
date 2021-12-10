@@ -1,0 +1,61 @@
+{% extends "layout-private.html" %}
+
+{% block title %}
+Kompetensi Dasar - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="module">
+    <div class="module-head">
+        <h3>{{ anchor('kompetensidasar', 'Kompetensi Dasar')|raw }} / Tambah</h3>
+    </div>
+    <div class="module-body">
+        {{ get_flashdata('kompetensidasar')|raw }}
+
+        {% if is_demo_app() %}
+        {{ get_alert('warning', get_demo_msg())|raw }}
+        {% endif %}
+
+        {{ form_open('kompetensidasar/add', {'class' : 'form-horizontal row-fluid'})|raw }}
+        <div class="control-group">
+            <label class="control-label">Kelas <span class="text-error">*</span></label>
+            <div class="controls">
+                <select name="kelas_id">
+                    {% for k in kelas %}
+                    <option value="{{ k.id }}" {{ set_select('kelas_id', k.id) }}>{{ k.nama }}</option>
+                    {% endfor %}
+                </select>
+                <br>{{ form_error('mapel_id')|raw }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Mapel</label>
+            <div class="controls">
+                <select name="mapel_id">
+                    <option value="">--pilih--</option>
+                    {% for m in mapel %}
+                    <option value="{{ m.id }}" {{ set_select('mapel_id', m.id) }}>{{ m.nama }}</option>
+                    {% endfor %}
+                </select>
+                <br>{{ form_error('mapel_id')|raw }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Text</label>
+            <div class="controls">
+                <textarea name="isi" class="span12" rows="5">{{ set_value('isi')|raw }}</textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                {% if is_demo_app() == false %}
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                {% endif %}
+                <a href="{{ site_url('mapel') }}" class="btn">Batal</a>
+            </div>
+        </div>
+        {{ form_close()|raw }}
+
+    </div>
+</div>
+{% endblock %}

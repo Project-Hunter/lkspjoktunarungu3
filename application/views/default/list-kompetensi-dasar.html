@@ -1,0 +1,104 @@
+{% extends "layout-private.html" %}
+
+{% block title %}
+Manajemen Kelas - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="module">
+    <div class="module-head">
+        <h3>Manajemen Kompetensi Dasar</h3>
+    </div>
+    <div class="module-body">
+
+        {% if is_demo_app() %}
+            {{ get_alert('warning', get_demo_msg())|raw }}
+        {% endif %}
+
+        <div class="row-fluid">
+            <div class="span2">
+                <a href="{{ site_url('kompetensidasar/add') }}" class="btn btn-primary">Tambah Kompetensi Dasar</a>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="bs-callout bs-callout-info">
+            <b class="as-link" data-toggle="collapse" data-target="#form-filter"><i class="icon-search"></i> PARAMETER
+                PENCARIAN</b>
+            <div id="form-filter" class="collapse">
+                {{ form_open('pengajar/filter')|raw }}
+                <table class="table table-condensed" id="form-search">
+                    <tr>
+                        <th width="20%">Kelas</th>
+                        <td>
+                            <div class="controls">
+                                <select name="kelas_id">
+                                    {% for k in kelas %}
+                                    <option value="{{ k.id }}" {{ set_select('kelas_id', k.id) }}>{{ k.nama }}</option>
+                                    {% endfor %}
+                                </select>
+                                <br>{{ form_error('mapel_id')|raw }}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Mapel</th>
+                        <td>
+                            <div class="controls">
+                                <select name="mapel_id">
+                                    <option value="">--pilih--</option>
+                                    {% for m in mapel %}
+                                    <option value="{{ m.id }}" {{ set_select('mapel_id', m.id) }}>{{ m.nama }}</option>
+                                    {% endfor %}
+                                </select>
+                                <br>{{ form_error('mapel_id')|raw }}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Filter</button>
+                        </td>
+                    </tr>
+                </table>
+                {{ form_close()|raw }}
+            </div>
+        </div>
+        <br>
+
+        <table class="table table-striped datatable">
+            <thead>
+                <tr>
+                    <th width="3%"></th>
+                    <th>Kompetensi Dasar</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for n in kompetensidasar %}
+                <tr>
+                    <td>
+                        <b>{{ v.id }}</b>
+                    </td>
+                    <td>
+                        {{ n.isi }}
+                        <br>
+                        
+                        <span class="label label-warning">{{ get_row_data('kelas_model', 'retrieve', [n.kelas_id], 'nama') }}</span>
+                        <span class="label label-warning">Mapel : {{ get_row_data('mapel_model', 'retrieve', [n.mapel_id], 'nama') }}</span>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            {{ anchor('kompetensidasar/edit/' ~ n.id ~ '/' ~ enurl_redirect(current_url()), '<i class="icon-edit"></i> Edit', {'class' : 'btn btn-default btn-small'})|raw }}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{% endblock %}

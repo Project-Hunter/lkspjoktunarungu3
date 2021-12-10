@@ -227,6 +227,42 @@ $config['mapel/add'] = array(
     )
 );
 
+$config['kompetensidasar/add'] = array(
+    array(
+        'field' => 'mapel_id',
+        'label' => 'Mapel',
+        'rules' => 'required|trim|xss_clean|numeric'
+    ),
+    array(
+        'field' => 'kelas_id',
+        'label' => 'Kelas',
+        'rules' => 'required|trim|xss_clean|numeric'
+    ),
+    array(
+        'field' => 'isi',
+        'label' => 'Isi',
+        'rules' => 'required|trim'
+    ),
+);
+
+$config['kompetensidasar/edit'] = array(
+    array(
+        'field' => 'mapel_id',
+        'label' => 'Mapel',
+        'rules' => 'required|trim|xss_clean|numeric'
+    ),
+    array(
+        'field' => 'kelas_id',
+        'label' => 'Kelas',
+        'rules' => 'required|trim|xss_clean|numeric'
+    ),
+    array(
+        'field' => 'isi',
+        'label' => 'Isi',
+        'rules' => 'required|trim'
+    ),
+);
+
 $config['mapel/edit'] = array(
     array(
         'field' => 'nama',
