@@ -9,8 +9,6 @@
 /assets/comp/tinymce/plugins/tiny_mce_wiris/cache/
 /assets/comp/tinymce/plugins/tiny_mce_wiris/formulas/
 /assets/comp/ckeditor/plugins/ckeditor_wiris/formulas/
-/application/config/config.php
-/application/config/database.php
 /nbproject/
 /plugins/src/
 /plugins/views/
