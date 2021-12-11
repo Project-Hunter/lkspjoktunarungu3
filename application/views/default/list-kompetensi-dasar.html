@@ -94,7 +94,8 @@ Manajemen Kelas - {{ parent() }}
                     <td>
                         <div class="btn-group">
                             {{ anchor('kompetensidasar/edit/' ~ n.id ~ '/' ~ enurl_redirect(current_url()), '<i class="icon-edit"></i> Edit', {'class' : 'btn btn-default btn-small'})|raw }}
-                            {{ anchor('kompetensidasar/sub/' ~ n.id ~ '/' ~ enurl_redirect(current_url()), '<i class="icon-book"></i> Sub Kompetensi', {'class' : 'btn btn-default btn-small'})|raw }}
+                            {{ anchor('kompetensidasar/sub/' ~ n.id ~ '/' ~ enurl_redirect(current_url()), '<i class="icon-book"></i> Sub Kompetensi', {'class' : 'btn btn-success btn-small'})|raw }}
+                            <a onclick="return confirm('Anda yakin ingin menghapus?')" class="btn btn-danger btn-small" href="{{ site_url('kompetensidasar/delete/' ~ n.id) }}" data-toggle="tooltip" title="Hapus"><i class="icon-trash"></i></a>
                         </div>
                     </td>
                 </tr>

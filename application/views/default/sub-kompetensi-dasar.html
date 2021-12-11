@@ -32,7 +32,17 @@ Sub Kompetensi Dasar - {{ parent() }}
             
             <div class="panel panel-default" style="flex-basis: 100%;">
                 <div class="panel-body">
-                    <p><b>{{ n.nomor }} . {{ n.isi }}</b></p>
+                    <div style="display: flex;">
+                        <div><b style="padding-right: 10px;">{{ n.nomor }} </b> </div>
+                        <div style="flex-basis: 100%;">{{ n.isi }}</div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="btn-group">
+
+                        <a href="{{ site_url('kompetensidasar/edit_sub/' ~ n.id) }}" class="btn btn-success">Edit</a>
+                        <a onclick="return confirm('Anda yakin ingin menghapus?')" class="btn btn-danger btn-small" href="{{ site_url('kompetensidasar/delete_sub/' ~ n.id ~ '/' ~ enurl_redirect(current_url())) }}" data-toggle="tooltip" title="Hapus"><i class="icon-trash"></i></a>
+                    </div>
                 </div>
             </div>
         </div>

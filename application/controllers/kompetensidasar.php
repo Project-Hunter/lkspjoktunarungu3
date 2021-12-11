@@ -89,20 +89,6 @@ class KompetensiDasar extends MY_Controller
         $this->twig->display('tambah-kompetensi-dasar.html',$data);
     }
 
-    // private function hirarki(){
-    //     $parent = $this->kompetensidasar_model->retrieve_all();
-
-    //     $return = '';
-    //     foreach ($parent as $p) {
-    //         $return .= '<div class="parent-kelas" id="parent-'.$p['id'].'">'.$p['isi'].'</div>';
-
-
-    //     }
-
-    //     return $return;
-    // }
-
-
 
     function edit($segment_3 = '',$segment_4 = '')
     {
@@ -149,6 +135,27 @@ class KompetensiDasar extends MY_Controller
         }
 
         $this->twig->display('edit-kompetensi-dasar.html', $data);
+    }
+
+    public function delete($id)
+    {
+        $this->kompetensidasar_model->delete($id);
+
+        $this->session->set_flashdata('msg', get_alert('success', 'Kompetensi berhasil dihapus.'));
+
+        redirect('kompetensidasar');
+    }
+
+    public function delete_sub($id)
+    {
+        $kd = $this->kompetensidasar_model->retrieve($id);
+        $parent_node = $kd['parent_node'];
+
+        $this->kompetensidasar_model->delete_sub($id);
+
+        $this->session->set_flashdata('msg', get_alert('success', 'Kompetensi berhasil dihapus.'));
+
+        redirect('kompetensidasar/sub/'.$parent_node);
     }
 
     function sub($segment_3 = '',$segment_4 = '')
@@ -201,7 +208,6 @@ class KompetensiDasar extends MY_Controller
 
     function add_sub($id)
     {
-        // print_r($id);die();
         if ($this->form_validation->run('kompetensidasar/add_sub') == TRUE AND !is_demo_app()) {
             $kelas_id = $this->input->post('kelas_id', TRUE);
             $mapel_id = $this->input->post('mapel_id', TRUE);
@@ -234,6 +240,43 @@ class KompetensiDasar extends MY_Controller
         $data['parent'] = $this->kompetensidasar_model->retrieve_all_sub_wth_node($kd['mapel_id'], $kd['kelas_id']);
 
         $this->twig->display('tambah-sub-kompetensi-dasar.html',$data);
+    }
+
+    
+    function edit_sub($id)
+    {
+        if ($this->form_validation->run('kompetensidasar/edit_sub') == TRUE) {
+            $isi = $this->input->post('isi', TRUE);
+            $nomor = $this->input->post('nomor', TRUE);
+            $parent_node = $this->input->post('parent_node', TRUE);
+            $parent = $this->input->post('parent', TRUE);
+
+            $parent = $parent == '' ? $parent_node : $parent;
+
+            $level = 2;
+
+            if(!empty($parent)){
+                $check_parent = $this->kompetensidasar_model->retrieve($parent);
+                $level = $check_parent['level'] + 1;
+            }
+
+            $this->kompetensidasar_model->edit_sub($id, $isi,$nomor,$parent,$level);
+            
+            $this->session->set_flashdata('kompetensidasar', get_alert('success', 'Kompetensi Dasar baru berhasil disimpan.'));
+            redirect('kompetensidasar/sub/'.$id);
+        }
+
+        $kd_this = $this->kompetensidasar_model->retrieve($id);
+        $kd = $this->kompetensidasar_model->retrieve($kd_this['parent_node']);
+
+        $data['id'] = $id;
+        $data['kd'] = $kd;
+        $data['kd_this'] = $kd_this;
+        $data['mapel'] = $this->mapel_model->retrieve_all_mapel();
+        $data['kelas'] = $this->kelas_model->retrieve_all();
+        $data['parent'] = $this->kompetensidasar_model->retrieve_all_sub_wth_node($kd['mapel_id'], $kd['kelas_id']);
+
+        $this->twig->display('edit-sub-kompetensi-dasar.html', $data);
     }
 
     private function mapel_kelas_hirarki($view = '', $params = array()){

@@ -90,6 +90,22 @@ class Kompetensidasar_model extends CI_Model
         return $result;
     }
 
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->or_where('parent_node', $id);
+        $this->db->delete('kompetensi_dasar');
+        return true;
+    }
+
+    public function delete_sub($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->or_where('parent', $id);
+        $this->db->delete('kompetensi_dasar');
+        return true;
+    }
+
     public function create_sub(
         $kelas_id, 
         $mapel_id, 
@@ -114,6 +130,27 @@ class Kompetensidasar_model extends CI_Model
         );
         $this->db->insert('kompetensi_dasar', $data);
         return $this->db->insert_id();
+    }
+
+    public function edit_sub(
+        $id,
+        $isi, 
+        $nomor, 
+        $parent, 
+        $level
+        )
+    {
+
+        $data = array(
+            'isi' => $isi,
+            'nomor' => $nomor,
+            'level' => $level,
+            'parent' => $parent == '' ? null : $parent,
+        );
+
+        $this->db->where('id', $id);
+        $this->db->update('kompetensi_dasar', $data);
+        return true;
     }
 
 }
