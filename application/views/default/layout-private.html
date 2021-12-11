@@ -27,7 +27,6 @@
                             {% include 'top-mobile-menu.html' %}
 
                             {% if is_admin() %}
-                            <li><a href="{{ site_url('welcome/get_plugin') }}">PLUGINS</a></li>
                             {% endif %}
                             <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 {{ nama_panggilan(get_sess_data('user', 'nama')) }}

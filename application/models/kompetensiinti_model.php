@@ -4,7 +4,7 @@
  * Class Model untuk resource mapel
  *
  * @package Elearning Dokumenary
- * @link    http://www.dokumenary.net
+ * @link    
  */
 class Kompetensiinti_model extends CI_Model
 {

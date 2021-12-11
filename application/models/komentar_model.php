@@ -4,7 +4,7 @@
  * Class Model untuk resource komentar materi
  *
  * @package Elearning Dokumenary
- * @link    http://www.dokumenary.net
+ * @link    
  * @since   1.5
  * @author  Almazari
  */

@@ -4,7 +4,7 @@
  * Class Model untuk resource Materi
  *
  * @package Elearning Dokumenary
- * @link    http://www.dokumenary.net
+ * @link    
  */
 class Materi_model extends CI_Model
 {

@@ -4,7 +4,7 @@
  * Class Model untuk resource Login
  *
  * @package Elearning Dokumenary
- * @link    http://www.dokumenary.net
+ * @link    
  */
 class Login_model extends CI_Model
 {

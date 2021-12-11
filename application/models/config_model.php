@@ -4,7 +4,7 @@
  * Class Model untuk Config
  *
  * @package Elearning Dokumenary
- * @link    http://www.dokumenary.net
+ * @link    
  * @author  Almazari <almazary@gmail.com>
  */
 class Config_model extends CI_Model

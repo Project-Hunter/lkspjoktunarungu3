@@ -7,7 +7,7 @@
  * @author    Almazari <almazary@gmail.com>
  * @copyright Copyright (c) 2013 - 2016, Dokumenary Net.
  * @since     1.0
- * @link      http://dokumenary.net
+ * @link      
  *
  * INDEMNITY
  * You agree to indemnify and hold harmless the authors of the Software and
@@ -46,9 +46,9 @@ class MY_Controller extends CI_Controller
 
         date_default_timezone_set($this->default_timezone);
 
-        $this->update_link        = 'http://www.dokumenary.net/category/new-elearning/feed/';
-        $this->portal_update_link = 'http://www.dokumenary.net/category/new-elearning/';
-        $this->bug_tracker_link   = 'http://www.dokumenary.net/category/bug-tracker-new-elearning/';
+        $this->update_link        = '/category/new-elearning/feed/';
+        $this->portal_update_link = '/category/new-elearning/';
+        $this->bug_tracker_link   = '/category/bug-tracker-new-elearning/';
 
         # load helper
         $this->load->helper(array('url', 'form', 'text', 'elearning', 'security', 'file', 'number', 'date', 'download', 'plugins'));

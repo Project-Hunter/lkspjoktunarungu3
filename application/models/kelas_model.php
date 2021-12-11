@@ -4,7 +4,7 @@
  * Class Model untuk resource kelas
  *
  * @package Elearning Dokumenary
- * @link    http://www.dokumenary.net
+ * @link    
  */
 class Kelas_model extends CI_Model
 {

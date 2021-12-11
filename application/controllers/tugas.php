@@ -6,7 +6,7 @@
  * @author    Almazari <almazary@gmail.com>
  * @copyright Copyright (c) 2013 - 2016, Dokumenary Net.
  * @since     1.0
- * @link      http://dokumenary.net
+ * @link      
  *
  * INDEMNITY
  * You agree to indemnify and hold harmless the authors of the Software and

@@ -4,7 +4,7 @@
  * Class Model untuk resource Tugas
  *
  * @package Elearning Dokumenary
- * @link    http://www.dokumenary.net
+ * @link    
  */
 class Tugas_model extends CI_Model
 {
