@@ -37,6 +37,12 @@ Edit Kompetensi Dasar - {{ parent() }}
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label">Nomor</label>
+                <div class="controls">
+                    <input type="number" name="nomor" value="{{ set_value('nomor', kompetensidasar.nomor)|raw }}">
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label">Isi <span class="text-error">*</span></label>
                 <div class="controls">
                     <textarea name="isi" id="isi">{{ set_value('isi', kompetensidasar.isi)|raw }}</textarea>

@@ -1,0 +1,44 @@
+{% extends "layout-private.html" %}
+
+{% block title %}
+Sub Kompetensi Dasar - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="module">
+    <div class="module-head">
+        <h3>{{ anchor(uri_back, 'Kompetensi Dasar')|raw }} / Sub Kompetensi Dasar</h3>
+    </div>
+    <div class="module-body">
+        {{ get_flashdata('subkompetensidasar')|raw }}
+
+        <h5>{{ kd.nomor }}. {{ kd.isi }}</h5>
+
+        <br>
+
+        <div class="row-fluid">
+            <div class="span2">
+                <a href="{{ site_url('kompetensidasar/add_sub/' ~ kd.id)  }}" class="btn btn-primary">Tambah Sub Kompetensi Dasar</a>
+            </div>
+        </div>
+
+        <br>
+
+        {% for n in kompetensidasar %}
+        <div style="display: flex;">
+            {% for i in 0..n.level-2 %}
+            <div style="width: 10px;"></div>
+            {% endfor %}
+            
+            <div class="panel panel-default" style="flex-basis: 100%;">
+                <div class="panel-body">
+                    <p><b>{{ n.nomor }} . {{ n.isi }}</b></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+{% endblock %}

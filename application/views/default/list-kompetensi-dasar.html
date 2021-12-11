@@ -23,6 +23,8 @@ Manajemen Kelas - {{ parent() }}
 
         <br>
 
+        {{ form_open('kompetensidasar/index/' ~ status_id)|raw }}
+
         <div class="bs-callout bs-callout-info">
             <b class="as-link" data-toggle="collapse" data-target="#form-filter"><i class="icon-search"></i> PARAMETER
                 PENCARIAN</b>
@@ -71,17 +73,14 @@ Manajemen Kelas - {{ parent() }}
         <table class="table table-striped datatable">
             <thead>
                 <tr>
-                    <th width="3%"></th>
                     <th>Kompetensi Dasar</th>
+                    <th width="3%">Nomor</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 {% for n in kompetensidasar %}
                 <tr>
-                    <td>
-                        <b>{{ v.id }}</b>
-                    </td>
                     <td>
                         {{ n.isi }}
                         <br>
@@ -90,14 +89,23 @@ Manajemen Kelas - {{ parent() }}
                         <span class="label label-warning">Mapel : {{ get_row_data('mapel_model', 'retrieve', [n.mapel_id], 'nama') }}</span>
                     </td>
                     <td>
+                        <b>{{ n.nomor }}</b>
+                    </td>
+                    <td>
                         <div class="btn-group">
                             {{ anchor('kompetensidasar/edit/' ~ n.id ~ '/' ~ enurl_redirect(current_url()), '<i class="icon-edit"></i> Edit', {'class' : 'btn btn-default btn-small'})|raw }}
+                            {{ anchor('kompetensidasar/sub/' ~ n.id ~ '/' ~ enurl_redirect(current_url()), '<i class="icon-book"></i> Sub Kompetensi', {'class' : 'btn btn-default btn-small'})|raw }}
                         </div>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+
+        {{ form_close()|raw }}
+
+        <br>
+        <!-- {{ pagination|raw }} -->
 
     </div>
 </div>

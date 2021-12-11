@@ -1,13 +1,13 @@
 {% extends "layout-private.html" %}
 
 {% block title %}
-Kompetensi Dasar - {{ parent() }}
+Sub Kompetensi Dasar - {{ parent() }}
 {% endblock %}
 
 {% block content %}
 <div class="module">
     <div class="module-head">
-        <h3>{{ anchor('kompetensidasar', 'Kompetensi Dasar')|raw }} / Tambah</h3>
+        <h3>{{ anchor('kompetensidasar', 'Kompetensi Dasar')|raw }} / {{ anchor('kompetensidasar/sub/' ~ kd.id, 'Sub Kompetensi Dasar')|raw }} / Tambah</h3>
     </div>
     <div class="module-body">
         {{ get_flashdata('kompetensidasar')|raw }}
@@ -16,34 +16,30 @@ Kompetensi Dasar - {{ parent() }}
         {{ get_alert('warning', get_demo_msg())|raw }}
         {% endif %}
 
-        {{ form_open('kompetensidasar/add', {'class' : 'form-horizontal row-fluid'})|raw }}
+        {{ form_open('kompetensidasar/add_sub/'~ kd.id, {'class' : 'form-horizontal row-fluid'})|raw }}
+
+        <input type="hidden" name="parent_node" readonly value="{{ kd.id }}">
+
+        <input type="hidden" name="kelas_id" readonly value="{{ kd.kelas_id }}">
+
+        <input type="hidden" name="mapel_id" readonly value="{{ kd.mapel_id }}">
+
         <div class="control-group">
-            <label class="control-label">Kelas <span class="text-error">*</span></label>
+            <label class="control-label">Sub Dari</label>
             <div class="controls">
-                <select name="kelas_id">
-                    {% for k in kelas %}
-                    <option value="{{ k.id }}" {{ set_select('kelas_id', k.id) }}>{{ k.nama }}</option>
+                <select name="parent">
+                    <option value=""> - </option>
+                    {% for p in parent %}
+                    <option value="{{ p.id }}" {{ set_select('parent', p.id) }}>{{ p.nomor }}. {{ p.isi }}</option>
                     {% endfor %}
                 </select>
-                <br>{{ form_error('mapel_id')|raw }}
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Mapel</label>
-            <div class="controls">
-                <select name="mapel_id">
-                    <option value="">--pilih--</option>
-                    {% for m in mapel %}
-                    <option value="{{ m.id }}" {{ set_select('mapel_id', m.id) }}>{{ m.nama }}</option>
-                    {% endfor %}
-                </select>
-                <br>{{ form_error('mapel_id')|raw }}
+                <br>{{ form_error('parent')|raw }}
             </div>
         </div>
         <div class="control-group">
             <label class="control-label">Nomor</label>
             <div class="controls">
-                <input type="number" name="nomor" value="{{ set_value('nomor')|raw }}">
+                <input placeholder="ex : 1.1" type="text" name="nomor" value="{{ set_value('nomor')|raw }}">
             </div>
         </div>
         <div class="control-group">
@@ -57,7 +53,7 @@ Kompetensi Dasar - {{ parent() }}
                 {% if is_demo_app() == false %}
                 <button type="submit" class="btn btn-primary">Simpan</button>
                 {% endif %}
-                <a href="{{ site_url('kompetensidasar') }}" class="btn">Batal</a>
+                <a href="{{ site_url('kompetensidasar/sub/'~kd.id) }}" class="btn">Batal</a>
             </div>
         </div>
         {{ form_close()|raw }}

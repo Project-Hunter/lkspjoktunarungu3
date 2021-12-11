@@ -263,6 +263,19 @@ $config['kompetensidasar/edit'] = array(
     ),
 );
 
+$config['kompetensidasar/add_sub'] = array(
+    array(
+        'field' => 'nomor',
+        'label' => 'Nomor',
+        'rules' => 'required|trim|xss_clean'
+    ),
+    array(
+        'field' => 'isi',
+        'label' => 'Isi',
+        'rules' => 'required|trim'
+    ),
+);
+
 $config['mapel/edit'] = array(
     array(
         'field' => 'nama',
