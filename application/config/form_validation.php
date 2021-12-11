@@ -289,6 +289,68 @@ $config['kompetensidasar/edit_sub'] = array(
     ),
 );
 
+$config['kompetensiinti/add'] = array(
+    array(
+        'field' => 'mapel_id',
+        'label' => 'Mapel',
+        'rules' => 'required|trim|xss_clean|numeric'
+    ),
+    array(
+        'field' => 'kelas_id',
+        'label' => 'Kelas',
+        'rules' => 'required|trim|xss_clean|numeric'
+    ),
+    array(
+        'field' => 'isi',
+        'label' => 'Isi',
+        'rules' => 'required|trim'
+    ),
+);
+
+$config['kompetensiinti/edit'] = array(
+    array(
+        'field' => 'mapel_id',
+        'label' => 'Mapel',
+        'rules' => 'required|trim|xss_clean|numeric'
+    ),
+    array(
+        'field' => 'kelas_id',
+        'label' => 'Kelas',
+        'rules' => 'required|trim|xss_clean|numeric'
+    ),
+    array(
+        'field' => 'isi',
+        'label' => 'Isi',
+        'rules' => 'required|trim'
+    ),
+);
+
+$config['kompetensiinti/add_sub'] = array(
+    array(
+        'field' => 'nomor',
+        'label' => 'Nomor',
+        'rules' => 'required|trim|xss_clean'
+    ),
+    array(
+        'field' => 'isi',
+        'label' => 'Isi',
+        'rules' => 'required|trim'
+    ),
+);
+
+$config['kompetensiinti/edit_sub'] = array(
+    array(
+        'field' => 'nomor',
+        'label' => 'Nomor',
+        'rules' => 'required|trim|xss_clean'
+    ),
+    array(
+        'field' => 'isi',
+        'label' => 'Isi',
+        'rules' => 'required|trim'
+    ),
+);
+
 $config['mapel/edit'] = array(
     array(
         'field' => 'nama',

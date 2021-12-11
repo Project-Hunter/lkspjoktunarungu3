@@ -1,0 +1,63 @@
+{% extends "layout-private.html" %}
+
+{% block title %}
+Edit Kompetensi Inti - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="module">
+    <div class="module-head">
+        <h3>{{ anchor(uri_back, 'Kompetensi Inti')|raw }} / Edit Kompetensi Inti</h3>
+    </div>
+    <div class="module-body">
+        {{ get_flashdata('kompetensiinti')|raw }}
+
+        {{ form_open_multipart('kompetensiinti/edit/' ~ id ~ '/' ~ enurl_redirect(uri_back), {'class' : 'form-horizontal row-fluid'})|raw }}
+            <div class="control-group">
+                <label class="control-label">Kelas <span class="text-error">*</span></label>
+                <div class="controls">
+                    <select name="kelas_id">
+                        {% for k in kelas %}
+                        <option value="{{ k.id }}" {{ set_select('kelas_id', k.id, (k.id == kompetensiinti.kelas_id) ? true) }}>{{ k.nama }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>{{ form_error('mapel_id')|raw }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Matapelajaran <span class="text-error">*</span></label>
+                <div class="controls">
+                    <select name="mapel_id">
+                        <option value="">--pilih--</option>
+                        {% for m in mapel %}
+                        <option value="{{ m.id }}" {{ set_select('mapel_id', m.id, (m.id == kompetensiinti.mapel_id) ? true) }}>{{ m.nama }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>{{ form_error('mapel_id')|raw }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Nomor</label>
+                <div class="controls">
+                    <input type="number" name="nomor" value="{{ set_value('nomor', kompetensiinti.nomor)|raw }}">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Isi <span class="text-error">*</span></label>
+                <div class="controls">
+                    <textarea name="isi" id="isi">{{ set_value('isi', kompetensiinti.isi)|raw }}</textarea>
+                    {{ form_error('isi')|raw }}
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="{{ uri_back }}" class="btn btn-default">Kembali</a>
+                </div>
+            </div>
+        {{ form_close()|raw }}
+
+    </div>
+</div>
+{% endblock %}

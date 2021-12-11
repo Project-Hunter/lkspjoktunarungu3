@@ -1,0 +1,54 @@
+{% extends "layout-private.html" %}
+
+{% block title %}
+Sub Kompetensi Inti - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="module">
+    <div class="module-head">
+        <h3>{{ anchor(uri_back, 'Kompetensi Inti')|raw }} / Sub Kompetensi Inti</h3>
+    </div>
+    <div class="module-body">
+        {{ get_flashdata('subkompetensiinti')|raw }}
+
+        <h5>{{ kd.nomor }}. {{ kd.isi }}</h5>
+
+        <br>
+
+        <div class="row-fluid">
+            <div class="span2">
+                <a href="{{ site_url('kompetensiinti/add_sub/' ~ kd.id)  }}" class="btn btn-primary">Tambah Sub Kompetensi Inti</a>
+            </div>
+        </div>
+
+        <br>
+
+        {% for n in kompetensiinti %}
+        <div style="display: flex;">
+            {% for i in 0..n.level-2 %}
+            <div style="width: 10px;"></div>
+            {% endfor %}
+            
+            <div class="panel panel-default" style="flex-basis: 100%;">
+                <div class="panel-body">
+                    <div style="display: flex;">
+                        <div><b style="padding-right: 10px;">{{ n.nomor }} </b> </div>
+                        <div style="flex-basis: 100%;">{{ n.isi }}</div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="btn-group">
+
+                        <a href="{{ site_url('kompetensiinti/edit_sub/' ~ n.id) }}" class="btn btn-success">Edit</a>
+                        <a onclick="return confirm('Anda yakin ingin menghapus?')" class="btn btn-danger btn-small" href="{{ site_url('kompetensiinti/delete_sub/' ~ n.id ~ '/' ~ enurl_redirect(current_url())) }}" data-toggle="tooltip" title="Hapus"><i class="icon-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+{% endblock %}

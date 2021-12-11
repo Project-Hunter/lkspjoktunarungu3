@@ -29,7 +29,7 @@ class Menu
                 '<a href="' . site_url('tugas?clear_filter=true') . '"><i class="menu-icon icon-tasks"></i>Tugas </a>',
                 '<a href="' . site_url('materi?clear_filter=true') . '"><i class="menu-icon icon-book"></i>Materi </a>',
                 '<a href="' . site_url('kompetensidasar') . '"><i class="menu-icon icon-book"></i>Kompetensi Dasar </a>',
-                '<a href="' . site_url('mapel') . '"><i class="menu-icon icon-book"></i>Kompetensi Inti </a>',
+                '<a href="' . site_url('kompetensiinti') . '"><i class="menu-icon icon-book"></i>Kompetensi Inti </a>',
             ),
             3 => array(
                 '<a href="' . site_url('kelas/mapel_kelas') . '"><i class="menu-icon icon-paste"></i>Matapelajaran Kelas </a>',

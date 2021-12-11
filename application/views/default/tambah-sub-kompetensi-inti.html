@@ -1,0 +1,63 @@
+{% extends "layout-private.html" %}
+
+{% block title %}
+Sub Kompetensi Inti - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="module">
+    <div class="module-head">
+        <h3>{{ anchor('kompetensiinti', 'Kompetensi Inti')|raw }} / {{ anchor('kompetensiinti/sub/' ~ kd.id, 'Sub Kompetensi Inti')|raw }} / Tambah</h3>
+    </div>
+    <div class="module-body">
+        {{ get_flashdata('kompetensiinti')|raw }}
+
+        {% if is_demo_app() %}
+        {{ get_alert('warning', get_demo_msg())|raw }}
+        {% endif %}
+
+        {{ form_open('kompetensiinti/add_sub/'~ kd.id, {'class' : 'form-horizontal row-fluid'})|raw }}
+
+        <input type="hidden" name="parent_node" readonly value="{{ kd.id }}">
+
+        <input type="hidden" name="kelas_id" readonly value="{{ kd.kelas_id }}">
+
+        <input type="hidden" name="mapel_id" readonly value="{{ kd.mapel_id }}">
+
+        <div class="control-group">
+            <label class="control-label">Sub Dari</label>
+            <div class="controls">
+                <select name="parent">
+                    <option value=""> - </option>
+                    {% for p in parent %}
+                    <option value="{{ p.id }}" {{ set_select('parent', p.id) }}>{{ p.nomor }}. {{ p.isi }}</option>
+                    {% endfor %}
+                </select>
+                <br>{{ form_error('parent')|raw }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Nomor</label>
+            <div class="controls">
+                <input placeholder="ex : 1.1" type="text" name="nomor" value="{{ set_value('nomor')|raw }}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Text</label>
+            <div class="controls">
+                <textarea name="isi" class="span12" rows="5">{{ set_value('isi')|raw }}</textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                {% if is_demo_app() == false %}
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                {% endif %}
+                <a href="{{ site_url('kompetensiinti/sub/'~kd.id) }}" class="btn">Batal</a>
+            </div>
+        </div>
+        {{ form_close()|raw }}
+
+    </div>
+</div>
+{% endblock %}
