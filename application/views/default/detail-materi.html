@@ -24,6 +24,15 @@
         <hr class="hr-top">
         <div class="wrap-content">
             <div class="content">
+                <div class="btn-group" style="float: right;">
+                    {% if is_bookmark %}
+                    
+                    <a href="{{ site_url('bookmark/tooglebookmark/' ~ materi.id) }}" class="btn btn-danger btn-sm"><i class="icon icon-star"></i> Hapus Bookmark</a>
+                    {% else %}
+                    <a href="{{ site_url('bookmark/tooglebookmark/' ~ materi.id) }}" class="btn btn-success btn-sm"><i class="icon icon-star"></i> Tambahkan ke Bookmark</a>
+                    {% endif %}
+                </div>
+                <div style="clear: both;margin-bottom: 20px;"></div>
                 {% if error is not defined %}
                     {% if type == 'tertulis' %}
                         {{ materi.konten|raw }}
@@ -43,8 +52,8 @@
                     {% endif %}
 
                     <br>
-                    <div class="row-fluid">
-                        <div class="span8">
+                    <div class="row-fluid" style="clear: both;padding-top: 20px;">
+                        <!-- <div class="span8">
                             <h4>
                                 <i class="icon-pencil"></i> Tulis komentar
                                 <div class="pull-right" style="font-size: 14px;">{{ form_error('komentar')|raw }}</div>
@@ -77,7 +86,7 @@
                                 {{ materi.komentar_pagination|raw }}
                                 </div>
                             {% endif %}
-                        </div>
+                        </div> -->
                         <div class="span4">
                             <h4><i class="icon-file"></i> Materi lainnya</h4>
                             <ul class="unstyled ul-materi">

@@ -381,6 +381,19 @@ function is_siswa()
     return false;
 }
 
+function is_pengajar_or_is_admin()
+{
+    if (!is_login()) {
+        return false;
+    }
+
+    if (!empty($_SESSION['login_' . APP_PREFIX]['pengajar']) || !empty($_SESSION['login_' . APP_PREFIX]['admin'])) {
+        return true;
+    }
+
+    return false;
+}
+
 /**
  * Method untuk mendapatkan data session
  *

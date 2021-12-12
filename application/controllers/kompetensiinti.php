@@ -8,8 +8,7 @@ class KompetensiInti extends MY_Controller
 
         must_login();
 
-        # harus login sebagai admin
-        if (!is_admin()) {
+        if (!is_pengajar_or_is_admin()) {
             redirect('welcome');
         }
     }

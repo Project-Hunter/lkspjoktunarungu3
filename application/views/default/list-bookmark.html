@@ -1,0 +1,64 @@
+{% extends "layout-private.html" %}
+
+{% block title %}
+Bookmark - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="module">
+    <div class="module-head">
+        <h3>Manajemen Bookmark</h3>
+    </div>
+    <div class="module-body">
+
+        {% if is_demo_app() %}
+            {{ get_alert('warning', get_demo_msg())|raw }}
+        {% endif %}
+
+        <div class="row-fluid">
+            <div class="span2">
+                <a href="{{ site_url('materi?clear_filter=true') }}" class="btn btn-primary">Tambah Bookmark</a>
+            </div>
+        </div>
+
+        <br>
+
+        {{ form_open('bookmark/index/' ~ status_id)|raw }}
+
+
+        <table class="table table-striped datatable">
+            <thead>
+                <tr>
+                    <th>Bookmark</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for n in bookmark %}
+                <tr>
+                    <td>
+                        {{ n.materi_id }}
+                        <br>
+                        
+                        <!-- <span class="label label-warning">{{ get_row_data('kelas_model', 'retrieve', [n.kelas_id], 'nama') }}</span>
+                        <span class="label label-warning">Mapel : {{ get_row_data('mapel_model', 'retrieve', [n.mapel_id], 'nama') }}</span> -->
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            {{ anchor('materi/detail/' ~ n.materi_id, '<i class="icon-zoom-in"></i> Detail', {'class' : 'btn btn-default btn-small', 'target' : '_tab'})|raw }}
+                            {{ anchor('bookmark/tooglebookmark2/' ~ n.materi_id, '<i class="icon-zoom-in"></i> Hapus', {'class' : 'btn btn-danger btn-small'})|raw }}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {{ form_close()|raw }}
+
+        <br>
+        <!-- {{ pagination|raw }} -->
+
+    </div>
+</div>
+{% endblock %}

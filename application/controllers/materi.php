@@ -584,7 +584,23 @@ class Materi extends MY_Controller
             }
         }
 
+        if (!empty($_SESSION['login_' . APP_PREFIX]['siswa'])) {
+            $user_id = $_SESSION['login_' . APP_PREFIX]['siswa']['user']['id'];
+            $is_siswa = 1;
+        }elseif (!empty($_SESSION['login_' . APP_PREFIX]['pengajar'])) {
+            $user_id = $_SESSION['login_' . APP_PREFIX]['pengajar']['user']['id'];
+            $is_siswa = 0;
+        }else{
+            $user_id = $_SESSION['login_' . APP_PREFIX]['admin']['user']['id'];
+            $is_siswa = 0;
+        }
+
         $data['materi'] = $materi;
+        $data['is_bookmark'] = empty($this->bookmark_model->retrieve([
+            'materi_id' => $materi_id,
+            'user_id' => $user_id,
+            'is_siswa' => $is_siswa
+        ])) ? false : true;
 
         switch ($segment_4) {
             case 'laporkan':
