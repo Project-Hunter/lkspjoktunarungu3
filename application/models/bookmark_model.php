@@ -10,8 +10,11 @@ class Bookmark_model extends CI_Model
 {
     public function retrieve_all($where)
     {
+        $this->db->select('*');
+        $this->db->from('bookmark');
+        $this->db->join('materi', 'materi.id = bookmark.materi_id');
         $this->db->where($where);
-        $result = $this->db->get('bookmark');
+        $result = $this->db->get();
         return $result->result_array();
     }
 

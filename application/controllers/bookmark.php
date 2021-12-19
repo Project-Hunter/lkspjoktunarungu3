@@ -22,8 +22,8 @@ class Bookmark extends MY_Controller
             $is_siswa = 0;
         }
         $data['bookmark'] = $this->bookmark_model->retrieve_all([
-            'user_id' => $user_id,
-            'is_siswa' => $is_siswa
+            'bookmark.user_id' => $user_id,
+            'bookmark.is_siswa' => $is_siswa
         ]);
         $this->twig->display('list-bookmark.html', $data);
     }
