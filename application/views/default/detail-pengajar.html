@@ -28,7 +28,7 @@
         {% endif %}
 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading" style="display: flex;justify-content: space-between;">
                 <strong>Profil pengajar {{ ((pengajar_login.is_admin == 1) ? '<label class="label label-warning">Administrator</label>')|raw }}</strong>
                 {% if is_admin() == true %}
                 <div class="btn-group pull-right" style="margin-top:-4px;">

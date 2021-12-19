@@ -24,7 +24,7 @@ body {
 
 /* Not required for template or sticky footer method. */
 .container {
-    width: 1000px;
+    /* width: 1000px; */
 }
 .credit {
     margin: 20px 0;
@@ -57,6 +57,8 @@ hr.hr-top {
     margin-top: 5px;
     margin-bottom: 0px;
     border-top: 5px solid #000;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 ul.ul-top {
     margin-left: -5px;
