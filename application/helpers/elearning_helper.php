@@ -100,7 +100,7 @@ function default_parser_item($add_item = array())
     # cek proses install tidak
     if ($CI->uri->segment(1) != 'setup') {
         $return['copyright'] = 'Copyright &copy; 2014 - ' . date('Y') . ' ' . get_pengaturan('nama-sekolah', 'value');
-        $return['site_name'] = 'LKS PJOK '.get_pengaturan('nama-sekolah', 'value');
+        $return['site_name'] = 'LKS PJOK Tuna Rungu';
         $return['version']   = '<a href="https://github.com/almazary/new_elearning">versi ' . get_pengaturan('versi', 'value') . '</a>';
 
         # load menu

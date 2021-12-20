@@ -1976,7 +1976,7 @@ class Tugas extends MY_Controller
 
                     $de_val = json_decode($mengerjakan['value'], 1);
                     if (empty($de_val['pertanyaan_id'])) {
-                        show_error("Maaf jawaban tidak dapat ditampilkan, karena dikerjakan pada e-learning dibawah versi 1.6.");
+                        show_error("Maaf jawaban tidak dapat ditampilkan, karena dikerjakan pada LKS PJOK dibawah versi 1.6.");
                     }
 
                     $soal  = array();
