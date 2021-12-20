@@ -5,13 +5,14 @@ Login - {{ parent() }}
 {% endblock %}
 
 {% block content %}
-<div class="row">
+<div class="row" style="    margin-top: 16vh;">
     {% if sliders is not empty %}
     <div class="span5 offset1">
         <div class="slider-wrapper theme-light">
             <div id="slider-login" class="nivoSlider">
                 {% for s in sliders %}
-                <img src="{{ get_url_image(s.value) }}" data-thumb="{{ get_url_image(s.value) }}" title="#html{{ s.id }}">
+                <img src="{{ get_url_image(s.value) }}" data-thumb="{{ get_url_image(s.value) }}"
+                    title="#html{{ s.id }}">
                 {% endfor %}
             </div>
             {% for s in sliders %}
@@ -23,33 +24,42 @@ Login - {{ parent() }}
     </div>
     {% endif %}
 
-    <div class="module span4 {{ (sliders is empty) ? ' offset4' }}">
+    <div class="module span4 {{ (sliders is empty) ? ' offset4' }}"
+        style="border-radius: 18px;box-shadow: 0px 0px 10px -2px #ddd;">
         {{ form_open('login', {'autocomplete': 'off', 'class' : 'form-vertical'})|raw }}
-            <div class="module-head">
-                <h3>Login LKS PJOK</h3>
-            </div>
-            <div class="module-body">
-               {{ get_flashdata('login')|raw }}
-                <div class="control-group">
-                    <div class="controls row-fluid">
-                        <input class="span12" name="email" type="text" placeholder="Username (Email)" value="{{ set_value('email') }}" autofocus>
-                        {{ form_error('email')|raw }}
-                    </div>
+        <div class="module-head" style="padding: 2rem; border-top-left-radius: 18px; border-top-right-radius: 18px;">
+            <h3 style="font-size: 1.1rem;">Masuk LKS PJOK Tuna Rungu</h3>
+        </div>
+        <div class="module-body" style="padding: 2rem 2rem 1rem 2rem;">
+            <p>Silahkan masukkan email dan password </p>
+            {{ get_flashdata('login')|raw }}
+            <div class="control-group" style="margin-top: 1rem;">
+                <div class="controls row-fluid">
+                    <input class="span12" name="email" type="text" placeholder="Username (Email)"
+                        value="{{ set_value('email') }}" autofocus style="    min-height: 3rem;
+    border-radius: 8px;
+    padding: 1rem;">
+                    {{ form_error('email')|raw }}
                 </div>
-                <div class="control-group">
-                    <div class="controls row-fluid">
-                        <input class="span12" name="password" type="password" placeholder="Password">
-                    </div>
-                </div>
-            </div>
-            <div class="module-foot">
-                <div class="control-group">
-                    <div class="controls clearfix">
-                        <button type="submit" class="btn btn-large btn-primary pull-right">Login</button>
-                        <a href="{{ site_url('login/lupa_password') }}">Lupa password?</a>
-                    </div>
+                <div class="controls row-fluid " style="margin-top: 0.6rem;">
+                    <input class="span12" name="password" type="password" placeholder="Password" style="    min-height: 3rem;
+    border-radius: 8px;
+    padding: 1rem;">
                 </div>
             </div>
+            <div class="control-group">
+
+            </div>
+        </div>
+        <div class="module-foot" style="border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
+            <div class="control-group">
+                <div class="controls clearfix">
+                    <button type="submit" class="btn btn-large btn-primary pull-right" style="    min-width: 5rem;
+                    min-height: 35px;">Masuk</button>
+                    <a href="{{ site_url('login/lupa_password') }}">Lupa password?</a>
+                </div>
+            </div>
+        </div>
         {{ form_close()|raw }}
     </div>
 </div>
