@@ -67,33 +67,6 @@ class Login extends MY_Controller
                     redirect('login');
                 }
 
-                # cari last login
-                $last_log = $this->login_model->retrieve_last_log($get_login['id']);
-                if (!empty($last_log)) {
-                    # cek last_activitynya, jika kurang dari 2 menit
-                    $time_minus = strtotime("-2 minutes", time());
-                    if ($last_log['last_activity'] > $time_minus) {
-                        # ini berarti ada yang masih login, cek ip dan browsernya
-                        $last_agent = json_decode($last_log['agent'], 1);
-                        $current_ip = get_ip();
-                        $current_browser =($this->agent->is_browser()) ? $this->agent->browser() . ' ' . $this->agent->version() : '';
-
-                        if ($current_ip != $last_agent['ip'] OR $current_browser != $last_agent['browser']) {
-                            # cari selisih
-                            $selisih = lama_pengerjaan(date("Y-m-d H:i:s", $last_log['last_activity']), date("Y-m-d H:i:s", $time_minus), "%i menit %s detik");
-
-                            # atur pesan
-                            $error_msg = "Akun anda sedang digunakan untuk login dengan IP {$last_agent['ip']}.";
-                            if ($current_ip == $last_agent['ip'] AND $current_browser != $last_agent['browser']) {
-                                $error_msg .= "<br><br>Jika anda hanya ganti browser, mohon tunggu {$selisih} dari sekarang.";
-                            }
-
-                            $this->session->set_flashdata('login', get_alert('warning', $error_msg));
-                            redirect('login');
-                        }
-                    }
-                }
-
                 # create log
                 $log_id = $this->login_model->create_log($get_login['id']);
                 $get_login['log_id'] = $log_id;
