@@ -92,7 +92,7 @@ function default_parser_item($add_item = array())
         'logo_url_medium'   => get_logo_url('medium'),
         'logo_url_large'    => get_logo_url('large'),
         'base_url_theme'    => base_url_theme().'/',
-        'site_name_default' => 'e-Learning system',
+        'site_name_default' => 'LKS PJOK',
         'url_referrer'      => $url_referrer,
         'elapsed_time'      => $CI->benchmark->elapsed_time(),
     );
@@ -100,7 +100,7 @@ function default_parser_item($add_item = array())
     # cek proses install tidak
     if ($CI->uri->segment(1) != 'setup') {
         $return['copyright'] = 'Copyright &copy; 2014 - ' . date('Y') . ' ' . get_pengaturan('nama-sekolah', 'value');
-        $return['site_name'] = 'e-Learning '.get_pengaturan('nama-sekolah', 'value');
+        $return['site_name'] = 'LKS PJOK '.get_pengaturan('nama-sekolah', 'value');
         $return['version']   = '<a href="https://github.com/almazary/new_elearning">versi ' . get_pengaturan('versi', 'value') . '</a>';
 
         # load menu
