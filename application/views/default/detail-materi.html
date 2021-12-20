@@ -13,7 +13,7 @@
             <ul class="unstyled inline ul-top">
                 <li><b>{{ materi.mapel.nama }}</b>,</li>
                 {% for mk in materi.materi_kelas %}
-                    <li>{{ mk.nama }},</li>
+                <li>{{ mk.nama }},</li>
                 {% endfor %}
                 <li>Diposting oleh <a href="{{ materi.pembuat.link_profil }}">{{ materi.pembuat.nama }}</a></li>
                 <li>{{ tgl_jam_indo(materi.tgl_posting) }},</li>
@@ -26,36 +26,42 @@
         <!-- <hr class="hr-top"> -->
         <div class="wrap-content">
             <div class="content">
-                <div class="btn-group" style="float: right;">
+                <div class="btn-group btn-materi" style="display: flex; align-items: center; justify-content: space-between; ">
+                    <a href="{{ site_url('materi?clear_filter=true') }}" class="btn btn-secondary btn-sm"><i
+                            class="icon icon-chevron-left"></i> Kembali</a>
+
                     {% if is_bookmark %}
-                    
-                    <a href="{{ site_url('bookmark/tooglebookmark/' ~ materi.id) }}" class="btn btn-danger btn-sm"><i class="icon icon-star"></i> Hapus Bookmark</a>
+
+                    <a href="{{ site_url('bookmark/tooglebookmark/' ~ materi.id) }}" class="btn btn-danger btn-sm"><i
+                            class="icon icon-star"></i> Hapus Bookmark</a>
                     {% else %}
-                    <a href="{{ site_url('bookmark/tooglebookmark/' ~ materi.id) }}" class="btn btn-success btn-sm"><i class="icon icon-star"></i> Tambahkan ke Bookmark</a>
+                    <a href="{{ site_url('bookmark/tooglebookmark/' ~ materi.id) }}" class="btn btn-success btn-sm"><i
+                            class="icon icon-star"></i> Tambahkan ke Bookmark</a>
                     {% endif %}
                 </div>
                 <div style="clear: both;margin-bottom: 20px;"></div>
                 {% if error is not defined %}
-                    {% if type == 'tertulis' %}
-                        {{ materi.konten|raw }}
-                    {% elseif type == 'file' %}
-                        <dl class="dl-horizontal">
-                            <dt>Name</dt>
-                            <dd>{{ (materi.file_info.name is empty) ? 'noname' : materi.file_info.name }}</dd>
-                            <dt>Size</dt>
-                            <dd>{{ byte_format(materi.file_info.size) }}</dd>
-                            <dt>Modified</dt>
-                            <dd>{{ tgl_jam_indo(mdate('%Y-%m-%d %H:%i:%s', materifile_info.date)) }}</dd>
-                            <dt>Mime</dt>
-                            <dd>{{ materi.file_info.mime }}</dd>
-                            <dt></dt>
-                            <dd><br><a href="{{ materi.download_link }}" class="btn btn-warning"><i class="icon-download"></i> Download File</a></dd>
-                        </dl>
-                    {% endif %}
+                {% if type == 'tertulis' %}
+                {{ materi.konten|raw }}
+                {% elseif type == 'file' %}
+                <dl class="dl-horizontal">
+                    <dt>Name</dt>
+                    <dd>{{ (materi.file_info.name is empty) ? 'noname' : materi.file_info.name }}</dd>
+                    <dt>Size</dt>
+                    <dd>{{ byte_format(materi.file_info.size) }}</dd>
+                    <dt>Modified</dt>
+                    <dd>{{ tgl_jam_indo(mdate('%Y-%m-%d %H:%i:%s', materifile_info.date)) }}</dd>
+                    <dt>Mime</dt>
+                    <dd>{{ materi.file_info.mime }}</dd>
+                    <dt></dt>
+                    <dd><br><a href="{{ materi.download_link }}" class="btn btn-warning"><i class="icon-download"></i>
+                            Download File</a></dd>
+                </dl>
+                {% endif %}
 
-                    <br>
-                    <div class="row-fluid" style="clear: both;padding-top: 20px;">
-                        <!-- <div class="span8">
+                <br>
+                <div class="row-fluid" style="clear: both;padding-top: 20px;">
+                    <!-- <div class="span8">
                             <h4>
                                 <i class="icon-pencil"></i> Tulis komentar
                                 <div class="pull-right" style="font-size: 14px;">{{ form_error('komentar')|raw }}</div>
@@ -89,28 +95,30 @@
                                 </div>
                             {% endif %}
                         </div> -->
-                        <div class="span4">
-                            <h4><i class="icon-file"></i> Materi lainnya</h4>
-                            <ul class="unstyled ul-materi">
-                                {% for t in terkait %}
-                                <li>
-                                    <div class="materi">
-                                        <a href="{{ site_url('materi/detail/' ~ t.id) }}"><i class="{{ (t.file is empty) ? 'icon-file' : 'icon-download' }} img-circle img-polaroid {{ (strlen(t.judul) > 33) ? 'pull-left' }}" style="padding:10px; margin-right:10px;"></i>{{ t.judul|raw }}</a>
-                                    </div>
-                                </li>
-                                {% endfor %}
+                    <div class="span4">
+                        <h4><i class="icon-file"></i> Materi lainnya</h4>
+                        <ul class="unstyled ul-materi">
+                            {% for t in terkait %}
+                            <li>
+                                <div class="materi">
+                                    <a href="{{ site_url('materi/detail/' ~ t.id) }}"><i
+                                            class="{{ (t.file is empty) ? 'icon-file' : 'icon-download' }} img-circle img-polaroid {{ (strlen(t.judul) > 33) ? 'pull-left' }}"
+                                            style="padding:10px; margin-right:10px;"></i>{{ t.judul|raw }}</a>
+                                </div>
+                            </li>
+                            {% endfor %}
 
-                                {% if terkait is empty %}
-                                <div class="alert alert-info">Tidak ada materi terkait</div>
-                                {% endif %}
-                            </ul>
-                        </div>
+                            {% if terkait is empty %}
+                            <div class="alert alert-info">Tidak ada materi terkait</div>
+                            {% endif %}
+                        </ul>
                     </div>
+                </div>
 
                 {% else %}
-                    <div class="alert alert-danger">
-                        <h3>{{ error }}</h3>
-                    </div>
+                <div class="alert alert-danger">
+                    <h3>{{ error }}</h3>
+                </div>
                 {% endif %}
             </div>
         </div>

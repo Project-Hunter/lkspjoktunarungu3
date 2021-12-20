@@ -2240,3 +2240,13 @@ hr.hr-normal {
     display: none;
   }
 }
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 425px) {
+	.btn-materi{
+		flex-direction: column;
+	}
+	.btn-materi a{
+		margin: 0.5rem 0;
+	}
+  }
