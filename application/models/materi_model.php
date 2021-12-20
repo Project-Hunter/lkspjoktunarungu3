@@ -244,7 +244,7 @@ class Materi_model extends CI_Model
         $where['mapel.aktif'] = array(1, 'where');
 
         $orderby = array(
-            'materi.id' => 'DESC'
+            'materi.id' => 'ASC'
         );
 
         if ($pagination) {
