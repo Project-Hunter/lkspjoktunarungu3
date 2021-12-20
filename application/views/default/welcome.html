@@ -7,13 +7,12 @@
     <div class="btn-box-row row-fluid">
         <div class="span12">
             <div class="well well-small well-box">
-                <small class="pull-right hidden-phone hidden-tablet">{{ tgl_indo(date('Y-m-d')) }}, IP anda: {{ get_ip() }}</small>
-                Selamat datang di <b>LKS PJOK {{ get_pengaturan('nama-sekolah', 'value') }}</b>
-                <br>
-                <i class="icon icon-map-marker"></i> Alamat: {{ get_pengaturan('alamat', 'value') }}
+                <!-- <small class="pull-right hidden-phone hidden-tablet">{{ tgl_indo(date('Y-m-d')) }}, IP anda: {{ get_ip() }}</small> -->
+                <h4 style="text-align: center;padding-top: 0.5rem;"> Menu Utama</h4></b>
+                <!-- <i class="icon icon-map-marker"></i> Alamat: {{ get_pengaturan('alamat', 'value') }}
                 {% if get_pengaturan('telp', 'value') is not empty %}
                 <i class="icon icon-phone"></i> Telpon: {{ get_pengaturan('telp', 'value') }}
-                {% endif %}
+                {% endif %} -->
             </div>
         </div>
     </div>
@@ -25,7 +24,8 @@
         <table class="table table-hover" style="margin-top:10px;">
             <tr>
                 <td width="30%">
-                    <a href="{{ site_url('mapel') }}"><b><i class="menu-icon icon-book"></i> Manajemen Matapelajaran</b></a>
+                    <a href="{{ site_url('mapel') }}"><b><i class="menu-icon icon-book"></i> Manajemen
+                            Matapelajaran</b></a>
                 </td>
                 <td>
                     Input semua Matapelajaran yang ada di sekolah
@@ -41,7 +41,8 @@
             </tr>
             <tr>
                 <td width="30%">
-                    <a href="{{ site_url('kelas/mapel_kelas') }}"><b><i class="menu-icon icon-paste"></i> Matapelajaran Kelas</b></a>
+                    <a href="{{ site_url('kelas/mapel_kelas') }}"><b><i class="menu-icon icon-paste"></i> Matapelajaran
+                            Kelas</b></a>
                 </td>
                 <td>
                     Atur Matapelajaran pada tiap-tiap Kelas
@@ -106,12 +107,12 @@
     {% set peraturan = get_pengaturan('peraturan-elearning', 'value') %}
     {% if peraturan is not empty %}
     <div class="btn-box-row row-fluid">
-         <div class="span12">
+        <div class="span12">
             <div class="well well-small well-box">
                 <b>Peraturan LKS PJOK : </b><br>
                 {{ peraturan|raw }}
             </div>
-         </div>
+        </div>
     </div>
     {% endif %}
 
@@ -141,27 +142,31 @@
     {% set peraturan = get_pengaturan('peraturan-elearning', 'value') %}
     {% if peraturan is not empty %}
     <div class="btn-box-row row-fluid">
-         <div class="span12">
+        <div class="span12">
             <div class="well well-small well-box">
                 <b>Peraturan LKS PJOK : </b><br>
                 {{ peraturan|raw }}
             </div>
-         </div>
+        </div>
     </div>
     {% endif %}
 
     <div class="btn-box-row row-fluid">
         <a href="{{ site_url('materi') }}" class="btn-box big span4">
-            <i class="icon-book"></i>
-            <p class="text-muted">Materi</p> 
+            <!-- <i class="icon-book"></i> -->
+
+            <img src="{{ base_url('assets/images/materi.png') }}" style="width: 4rem; height: 4rem; margin-bottom: 0.5rem;">
+            <p style="    font-weight: bold;color: black;">Materi</p>
         </a>
         <a href="{{ site_url('tugas') }}" class="btn-box big span4">
-            <i class="icon-tasks"></i>
-            <p class="text-muted">Tugas</p>
+            <!-- <i class="icon-tasks"></i> -->
+            <img src="{{ base_url('assets/images/tugas.png') }}" style="width: 4rem; height: 4rem; margin-bottom: 0.5rem;">
+            <p style="    font-weight: bold;color: black;">Tugas</p>
         </a>
         <a href="{{ site_url('bookmark') }}" class="btn-box big span4">
-            <i class="icon-bookmark"></i>
-            <p class="text-muted">Bookmark</p>
+            <!-- <i class="icon-bookmark"></i> -->
+            <img src="{{ base_url('assets/images/bookmark.png') }}" style="width: 4rem; height: 4rem; margin-bottom: 0.5rem;">
+            <p style="    font-weight: bold;color: black;">Bookmark</p>
         </a>
     </div>
     {% endif %}
