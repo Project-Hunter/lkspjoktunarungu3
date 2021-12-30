@@ -9,3 +9,10 @@ var base_url = "{{ base_url() }}";
 <script src="{{ base_url('assets/comp/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
 {{ comp_js|raw }}
 <script src="{{ base_url_theme }}scripts/script.js" type="text/javascript"></script>
+<script src="{{ base_url('upup.min.js') }}"></script>
+<script>
+    UpUp.start({
+        'content-url': '<?= site_url($this->uri->segment(1))>',
+        'assets': ['/img/logo.png', '/css/style.css', 'headlines.json']
+    });
+</script>
