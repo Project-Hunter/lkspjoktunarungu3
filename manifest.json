@@ -10,7 +10,7 @@
 	"icons":[
         {
             "src":"images/logo-medium.png",					
-            "sizes":"256x256",
+            "sizes":"120x122",
             "type":"image/png"
         }
     ]
