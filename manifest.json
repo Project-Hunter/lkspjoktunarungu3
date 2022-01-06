@@ -1,17 +1,16 @@
 {
-	"name":"LKS PJOK Tuna Rungu",
-	"short_name":"LKS PJOK",
-	"start_url":"index.html",
-	"display":"standalone",
-	"background_color":"#5900b3",
-	"theme_color":"black",
-	"scope": ".",
-	"description":"This is a LKS PJOK Tuna Rungu.",
-	"icons":[
+    "name": "LKS PJOK Tuna Rungu",
+    "short_name": "PWA",
+    "description": "Membuat LKS PJOK Tuna Rungu",
+    "icons": [
         {
-            "src":"images/logo3.png",					
-            "sizes":"144x144",
-            "type":"image/png"
+            "src": "images/logo3.png",
+            "sizes": "144x144",
+            "type": "image/png"
         }
-    ]
+    ],
+    "start_url": "/",
+    "display": "fullscreen",
+    "theme_color": "#007aff",
+    "background_color": "#007aff"
 }

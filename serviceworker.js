@@ -1,19 +1,44 @@
-var staticCacheName = "pwa";
+const CACHE_NAME = 'CACHE-01';
+const toCache = [
+    '/',
+    'manifest.json',
+    'register.js',
+    'images/logo3.png',
+];
 
-self.addEventListener("install", function (e) {
-    e.waitUntil(
-        caches.open(staticCacheName).then(function (cache) {
-            return cache.addAll(["/"]);
+self.addEventListener('install', function (event) {
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+        .then(function (cache) {
+            return cache.addAll(toCache)
         })
-    );
-});
+        .then(self.skipWaiting())
+    )
+})
 
-self.addEventListener("fetch", function (event) {
-    console.log(event.request.url);
-
+self.addEventListener('fetch', function (event) {
     event.respondWith(
-        caches.match(event.request).then(function (response) {
-            return response || fetch(event.request);
+        fetch(event.request)
+        .catch(() => {
+            return caches.open(CACHE_NAME)
+                .then((cache) => {
+                    return cache.match(event.request)
+                })
         })
-    );
-});
+    )
+})
+
+self.addEventListener('activate', function (event) {
+    event.waitUntil(
+        caches.keys()
+        .then((keyList) => {
+            return Promise.all(keyList.map((key) => {
+                if (key !== CACHE_NAME) {
+                    console.log('Hapus cache lama', key)
+                    return caches.delete(key)
+                }
+            }))
+        })
+        .then(() => self.clients.claim())
+    )
+})
