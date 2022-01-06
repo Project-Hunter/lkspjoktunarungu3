@@ -51,11 +51,11 @@ Login - {{ parent() }}
 
             </div>
         </div>
-        <div class="module-foot" style="border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
+        <div class="module-foot" style="border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; text-align: center;">
             <div class="control-group">
                 <div class="controls clearfix">
-                    <button type="submit" class="btn btn-large btn-primary pull-right" style="    min-width: 5rem;
-                    min-height: 35px;">Masuk</button>
+                    <button type="submit" class="btn btn-large btn-primary" style="display:block;margin-bottom:5px;width: 100%;">Masuk</button>
+                    <a href="{{ site_url('login/register') }}" class="btn btn-large btn-primary" style="display:block;margin-bottom:15px;">Daftar</a>
                     <a href="{{ site_url('login/lupa_password') }}">Lupa password?</a>
                 </div>
             </div>
