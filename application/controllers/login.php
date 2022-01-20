@@ -218,8 +218,7 @@ class Login extends MY_Controller
 
                 $foto = null;
 
-                $status_id = get_pengaturan('status-registrasi-siswa', 'value');
-                $status_id = (int)$status_id;
+                $status_id = 1;
 
                 # simpan data siswa
                 $siswa_id = $this->siswa_model->create(
