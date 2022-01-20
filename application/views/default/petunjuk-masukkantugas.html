@@ -1,0 +1,27 @@
+{% extends "layout-detail-materi.html" %}
+
+{% block title %}
+Petunjuk Materi - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div id="wrap">
+    <div class="container">
+        <div class="wrap-content" style="padding: 20px;">
+            <h1 class="title">Petunjuk Membuka Materi</h1>
+        </div>
+
+        <!-- <hr class="hr-top"> -->
+        <div class="wrap-content">
+            <div class="content">
+                <div class="btn-group btn-materi" style="display: flex; align-items: center; justify-content: space-between; ">
+                    <a href="{{ site_url('petunjuk') }}" class="btn btn-secondary btn-sm"><i
+                            class="icon icon-chevron-left"></i> Kembali</a>
+                </div>
+                <div style="clear: both;margin-bottom: 20px;"></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
