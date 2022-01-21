@@ -15,65 +15,80 @@ Petunjuk - {{ parent() }}
             {{ get_alert('warning', get_demo_msg())|raw }}
         {% endif %}
 
-        <table class="table table-striped datatable">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Petunjuk</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>
-                        Membuka Materi
-                        <br>
-                    </td>
-                    <td>
-                        <div class="btn-group">
-                            {{ anchor('petunjuk/materi/', '<i class="icon-zoom-in"></i> Detail', {'class' : 'btn btn-default btn-small', 'target' : '_tab'})|raw }}
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>
-                        Memasukkan Tugas
-                        <br>
-                    </td>
-                    <td>
-                        <div class="btn-group">
-                            {{ anchor('petunjuk/masukkantugas/', '<i class="icon-zoom-in"></i> Detail', {'class' : 'btn btn-default btn-small', 'target' : '_tab'})|raw }}
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>
-                        Menyimpan Bookmark
-                        <br>
-                    </td>
-                    <td>
-                        <div class="btn-group">
-                            {{ anchor('petunjuk/menyimpanbookmark/', '<i class="icon-zoom-in"></i> Detail', {'class' : 'btn btn-default btn-small', 'target' : '_tab'})|raw }}
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>
-                        Cara Logout
-                        <br>
-                    </td>
-                    <td>
-                        <div class="btn-group">
-                            {{ anchor('petunjuk/logout/', '<i class="icon-zoom-in"></i> Detail', {'class' : 'btn btn-default btn-small', 'target' : '_tab'})|raw }}
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Membuka Materi
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/IUX1GNpdilA"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                            href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Memasukkan Tugas
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/IUX1GNpdilA"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                            href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Menyimpan Bookmark
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/IUX1GNpdilA"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                            href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Cara Logout
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                    <div class="panel-body">
+                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/IUX1GNpdilA"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <br>
         <!-- {{ pagination|raw }} -->
