@@ -294,8 +294,7 @@ class Login extends MY_Controller
                     $tanggal_lahir = $thn_lahir.'-'.$bln_lahir.'-'.$tgl_lahir;
                 }
 
-                $status_id = get_pengaturan('status-registrasi-pengajar', 'value');
-                $status_id = (int)$status_id;
+                $status_id = 1;
 
                 # simpan data pengajar
                 $pengajar_id = $this->pengajar_model->create(
